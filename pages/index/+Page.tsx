@@ -1,6 +1,7 @@
-export { Page }
+export default Page
 
-import { Counter } from './Counter'
+import React from 'react'
+import { Counter } from '../../components/Counter'
 
 function Page() {
   return (

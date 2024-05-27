@@ -1,6 +1,6 @@
-import './code.css'
+export default Page
 
-export { Page }
+import React from 'react'
 
 function Page() {
   return (

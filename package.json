@@ -1,31 +1,21 @@
 {
   "scripts": {
-    "dev": "npm run server:dev",
-    "prod": "npm run lint && npm run build && npm run server:prod",
-    "build": "vite build",
-    "server:dev": "node ./server",
-    "server:prod": "cross-env NODE_ENV=production node ./server",
-    "lint": "eslint . --max-warnings 0"
+    "dev": "node ./dev-server",
+    "preview": "vite build && wrangler dev",
+    "build": "CLOUDFLARE_API_TOKEN=0jhbvV--T1ZZy5XGKYy8bkHV1FtmMRrHZffk8E8S vite build && wrangler publish"
   },
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.2.0",
     "@vitejs/plugin-react": "^4.2.1",
     "compression": "^1.7.4",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
     "express": "^4.18.2",
-    "node-fetch": "^3.3.2",
-    "prop-types": "15.8.1",
+    "node-fetch": "^2.6.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sirv": "^2.0.3",
-    "vike": "^0.4.172",
-    "vite": "^5.0.10"
+    "react-streaming": "^0.3.24",
+    "vite": "^5.0.10",
+    "vike": "0.4.172",
+    "wrangler": "^2.9.1"
   },
-  "type": "module",
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.10.0"
-  }
+  "type": "module"
 }

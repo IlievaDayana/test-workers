@@ -1,28 +1,24 @@
+import React from 'react'
+import './PageLayout.css'
+import { PageContextProvider } from './usePageContext'
+
 export { PageLayout }
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { childrenPropType } from './PropTypeValues'
-import logoUrl from './logo.svg'
-import { PageContextProvider } from './usePageContext'
-import { Link } from './Link'
-import './css/index.css'
-import './PageLayout.css'
-
-PageLayout.propTypes = {
-  pageContext: PropTypes.any,
-  children: childrenPropType
-}
 function PageLayout({ pageContext, children }) {
   return (
     <React.StrictMode>
       <PageContextProvider pageContext={pageContext}>
         <Layout>
           <Sidebar>
-            <Logo />
-            <Link href="/">Welcome</Link>
-            <Link href="/about">About</Link>
-            <Link href="/star-wars">Data Fetching</Link>
+            <a className="navitem" href="/">
+              Home
+            </a>
+            <a className="navitem" href="/about">
+              About
+            </a>
+            <a className="navitem" href="/star-wars">
+              Star Wars
+            </a>
           </Sidebar>
           <Content>{children}</Content>
         </Layout>
@@ -31,9 +27,6 @@ function PageLayout({ pageContext, children }) {
   )
 }
 
-Layout.propTypes = {
-  children: childrenPropType
-}
 function Layout({ children }) {
   return (
     <div
@@ -48,20 +41,17 @@ function Layout({ children }) {
   )
 }
 
-Sidebar.propTypes = {
-  children: childrenPropType
-}
 function Sidebar({ children }) {
   return (
     <div
-      id="sidebar"
       style={{
         padding: 20,
+        paddingTop: 42,
         flexShrink: 0,
         display: 'flex',
         flexDirection: 'column',
-        lineHeight: '1.8em',
-        borderRight: '2px solid #eee'
+        alignItems: 'center',
+        lineHeight: '1.8em'
       }}
     >
       {children}
@@ -69,37 +59,17 @@ function Sidebar({ children }) {
   )
 }
 
-Content.propTypes = {
-  children: childrenPropType
-}
 function Content({ children }) {
-  return (
-    <div id="page-container">
-      <div
-        id="page-content"
-        style={{
-          padding: 20,
-          paddingBottom: 50,
-          minHeight: '100vh'
-        }}
-      >
-        {children}
-      </div>
-    </div>
-  )
-}
-
-function Logo() {
   return (
     <div
       style={{
-        marginTop: 20,
-        marginBottom: 10
+        padding: 20,
+        paddingBottom: 50,
+        borderLeft: '2px solid #eee',
+        minHeight: '100vh'
       }}
     >
-      <a href="/">
-        <img src={logoUrl} height={64} width={64} alt="logo" />
-      </a>
+      {children}
     </div>
   )
 }
