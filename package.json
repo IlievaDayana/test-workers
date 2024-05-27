@@ -1,27 +1,31 @@
 {
-  "name": "vite-react-starter",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server",
-    "build": "NODE_ENV=production npm run build:client && npm run build:server",
-    "build:client": "vite build --ssrManifest --outDir dist/client",
-    "build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
-    "preview": "cross-env NODE_ENV=production node server"
+    "dev": "wrangler pages dev -- vite",
+    "serve": "wrangler pages dev dist/client -b ENVIRONMENT=production",
+    "build": "vite build",
+    "lint": "eslint . --fix"
   },
   "dependencies": {
-    "compression": "^1.7.4",
-    "express": "^4.19.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sirv": "^2.0.4"
+    "wrangler": "^3.57.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.79",
-    "@types/react-dom": "^18.2.25",
+    "@antfu/eslint-config": "^2.6.2",
+    "@cloudflare/workers-types": "^4.20231218.0",
+    "@types/node": "^20.10.7",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
-    "cross-env": "^7.0.3",
-    "vite": "^5.2.10"
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "typescript": "^5.3.3",
+    "unplugin-auto-import": "^0.17.3",
+    "vike": "^0.4.156",
+    "vike-react": "^0.3.8",
+    "vite": "^5.0.11"
   }
 }

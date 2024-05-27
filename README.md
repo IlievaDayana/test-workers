@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# vike-react + Cloudflare Pages Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[View Demo](https://vike-react-cf-pages.pages.dev)
 
-Currently, two official plugins are available:
+This is an example to show how `vike-react` and Cloudflare Pages can be used to quickly setup and host a React SSR website.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+### Development
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+In development, we run the Wrangler Pages CLI and the Vite dev server concurrently. This means we can run our Pages functions locally, and forward any 'frontend' requests to Vite. The proxy is handled by the Wrangler CLI: `wrangler pages dev -- vite`.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```sh
+pnpm install
+pnpm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Then view the site on [http://localhost:8788](http://localhost:8788)
+
+### Production
+
+To deploy the site on Cloudflare Pages, you need to add some custom configuration. Firstly, make sure the **Build command** is set to `pnpm run build` - this will run the Vite build command. Next, set the **Build output directory** to `/dist/client`.
+
+To build and test locally, follow the below commands:
+
+```sh
+pnpm run build
+pnpm run serve
+```
+
+Then view the site on [http://localhost:8788](http://localhost:8788)
