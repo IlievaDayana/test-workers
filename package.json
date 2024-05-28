@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "node ./dev-server",
     "preview": "vite build && wrangler dev",
-    "build": "CLOUDFLARE_API_TOKEN=0jhbvV--T1ZZy5XGKYy8bkHV1FtmMRrHZffk8E8S vite build && wrangler publish"
+    "build": "vite build",
+    "deploy": "vite build && wrangler deploy"
   },
   "dependencies": {
     "@cloudflare/kv-asset-handler": "^0.2.0",
@@ -13,9 +14,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-streaming": "^0.3.24",
-    "vite": "^5.0.10",
     "vike": "0.4.172",
-    "wrangler": "^2.9.1"
+    "vite": "^5.0.10",
+    "wrangler": "^3.57.1"
   },
   "type": "module"
 }
